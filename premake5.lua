@@ -26,7 +26,8 @@ project "SmallEngine"
 
     includedirs
     {
-        "ext/spdlog/include"
+        "ext/spdlog/include",
+        "SmallEngine/src"
     }
 
     filter "system:windows"

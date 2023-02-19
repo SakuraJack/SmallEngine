@@ -6,3 +6,7 @@ bin-int/
 # Files
 *.user
 *.bat
+SmallEngine.sln
+Sandbox/Sandbox.vcxproj
+SmallEngine/SmallEngine.vcxproj
+SmallEngine/SmallEngine.vcxproj.filters
