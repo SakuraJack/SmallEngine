@@ -1,3 +1,4 @@
+#include "sepzh.h"
 #include "Log.h"
 
 namespace SmallEngine

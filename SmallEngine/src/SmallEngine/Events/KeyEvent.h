@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace SmallEngine {
 	//抽象键盘事件基类
 	class SMALLENGINE_API KeyEvent : public Event

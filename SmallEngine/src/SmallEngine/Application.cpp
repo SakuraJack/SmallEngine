@@ -1,3 +1,4 @@
+#include "sepzh.h"
 #include "Application.h"
 
 namespace SmallEngine {

@@ -2,9 +2,6 @@
 
 #include "SmallEngine/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace SmallEngine {
 	//当前事件系统为阻塞队列
 	//当事件发生时 会立即阻塞并处理

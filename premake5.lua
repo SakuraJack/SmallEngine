@@ -18,6 +18,9 @@ project "SmallEngine"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "sepzh.h"
+    pchsource "SmallEngine/src/sepzh.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",
