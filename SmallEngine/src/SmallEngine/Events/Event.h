@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sepzh.h"
 #include "SmallEngine/Core.h"
 
 namespace SmallEngine {

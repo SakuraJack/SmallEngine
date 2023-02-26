@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "SmallEngine/Log.h"
 
 #ifdef SE_PLATFORM_WONDOWS
 	#include <Windows.h>

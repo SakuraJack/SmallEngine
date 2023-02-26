@@ -21,15 +21,15 @@ namespace SmallEngine
 }
 
 // Core log ºê
-#define SM_CORE_TRACE(...) ::SmallEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define SM_CORE_INFO(...)  ::SmallEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define SM_CORE_WARN(...)  ::SmallEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define SM_CORE_ERROR(...) ::SmallEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define SM_CORE_FATAL(...) ::SmallEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define SE_CORE_TRACE(...) ::SmallEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define SE_CORE_INFO(...)  ::SmallEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define SE_CORE_WARN(...)  ::SmallEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define SE_CORE_ERROR(...) ::SmallEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define SE_CORE_FATAL(...) ::SmallEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 //Client log ºê
-#define SM_CLIENT_TRACE(...) ::SmallEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define SM_CLIENT_INFO(...)  ::SmallEngine::Log::GetClientLogger()->info(__VA_ARGS__)
-#define SM_CLIENT_WARN(...)  ::SmallEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define SM_CLIENT_ERROR(...) ::SmallEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define SM_CLIENT_FATAL(...) ::SmallEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define SE_CLIENT_TRACE(...) ::SmallEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define SE_CLIENT_INFO(...)  ::SmallEngine::Log::GetClientLogger()->info(__VA_ARGS__)
+#define SE_CLIENT_WARN(...)  ::SmallEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define SE_CLIENT_ERROR(...) ::SmallEngine::Log::GetClientLogger()->error(__VA_ARGS__)
+#define SE_CLIENT_FATAL(...) ::SmallEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)

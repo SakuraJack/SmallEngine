@@ -10,6 +10,12 @@ workspace "SmallEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "SmallEngine/ext/GLFW/include"
+
+include "SmallEngine/ext/GLFW"
+
 project "SmallEngine"
     location "SmallEngine"
     kind "SharedLib"
@@ -29,8 +35,15 @@ project "SmallEngine"
 
     includedirs
     {
-        "ext/spdlog/include",
-        "SmallEngine/src"
+        "%{prj.name}/src",
+		"%{prj.name}/ext/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
@@ -50,24 +63,21 @@ project "SmallEngine"
         }
 
     filter "configurations:Debug"
-        defines "SM_DEBUG"
+        defines "SE_DEBUG"
         symbols "On"
 
     filter "configurations:Release"
-        defines "SM_RELEASE"
+        defines "SE_RELEASE"
         optimize "On"
 
     filter "configurations:Dist"
-        defines "SM_DIST"
+        defines "SE_DIST"
         optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -81,7 +91,7 @@ project "Sandbox"
     includedirs
     {
         "SmallEngine/src",
-        "ext/spdlog/include"
+        "SmallEngine/ext/spdlog/include",
     }
 
     links
@@ -100,13 +110,13 @@ project "Sandbox"
         }
 
     filter "configurations:Debug"
-        defines "SM_DEBUG"
+        defines "SE_DEBUG"
         symbols "On"
 
     filter "configurations:Release"
-        defines "SM_RELEASE"
+        defines "SE_RELEASE"
         optimize "On"
 
     filter "configurations:Dist"
-        defines "SM_DIST"
+        defines "SE_DIST"
         optimize "On"
