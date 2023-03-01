@@ -1,3 +1,0 @@
-[submodule "SmallEngine/ext/GLFW"]
-	path = SmallEngine/ext/GLFW
-	url = https://github.com/TheCherno/glfw
