@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "SmallEngine/ext/GLFW/include"
+IncludeDir["Glad"] = "SmallEngine/ext/Glad/include"
 
 include "SmallEngine/ext/GLFW"
+include "SmallEngine/ext/Glad"
 
 project "SmallEngine"
     location "SmallEngine"
@@ -37,12 +39,14 @@ project "SmallEngine"
     {
         "%{prj.name}/src",
 		"%{prj.name}/ext/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -54,7 +58,8 @@ project "SmallEngine"
         defines
         {
             "SE_PLATFORM_WINDOWS",
-            "SE_BUILD_DLL"
+            "SE_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
