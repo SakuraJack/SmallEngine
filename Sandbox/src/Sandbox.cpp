@@ -11,12 +11,12 @@ public:
 
 	void OnUpdate() override
 	{
-		SE_CLIENT_INFO("ExampleLayer::Update");
+		//SE_CLIENT_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(SmallEngine::Event& e) override
 	{
-		SE_CLIENT_TRACE("{0}", e.ToString());
+		//SE_CLIENT_TRACE("{0}", e.ToString());
 	}
 };
 

@@ -1,6 +1,8 @@
 #include "sepzh.h"
 #include "Application.h"
 
+#include <glad/glad.h>
+
 namespace SmallEngine {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	
@@ -8,7 +10,7 @@ namespace SmallEngine {
 
 	Application::Application()
 	{
-		SE_CORE_ASSERT(!s_Instance, "Application already exist!")
+		//SE_CORE_ASSERT(!s_Instance, "Application already exist!")
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -22,6 +24,9 @@ namespace SmallEngine {
 	void Application::Run()
 	{
 		while (m_Running) {
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
@@ -34,7 +39,7 @@ namespace SmallEngine {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		SE_CORE_INFO("{0}", e.ToString());
+		//SE_CORE_INFO("{0}", e.ToString());
 		//std::cout << e;
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
