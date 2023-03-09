@@ -129,6 +129,9 @@ namespace SmallEngine {
 	}
 	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.KeysDown[e.GetKeyCode()] = false;
+		
 		return false;
 	}
 	bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& e)
