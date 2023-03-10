@@ -7,6 +7,8 @@
 #include <SmallEngine/Platform/OpenGL/ImGuiOpenGLRenderer.h>
 #include "SmallEngine/Application.h"
 
+#define BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
 namespace SmallEngine {
 	ImGuiLayer::ImGuiLayer()
 		: Layer("ImGuiLayer")
@@ -19,7 +21,7 @@ namespace SmallEngine {
 
 	void ImGuiLayer::OnAttach()
 	{
-		ImGuiContext* cxt = ImGui::CreateContext();
+		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
 		
 		ImGuiIO& io = ImGui::GetIO();
@@ -63,7 +65,7 @@ namespace SmallEngine {
 		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
 		float time = (float)glfwGetTime();
-		io.DeltaTime = m_Time > 0.0 ? (time = m_Time) : (1.0f / 60.0f);
+		io.DeltaTime = m_Time > 0.0 ? (time - m_Time) : (1.0f / 60.0f);
 		m_Time = time;
 
 		ImGui_ImplOpenGL3_NewFrame();
@@ -78,6 +80,29 @@ namespace SmallEngine {
 
 	void ImGuiLayer::OnEvent(Event& event)
 	{
+		EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
+	}
+	bool ImGuiLayer::OnMouseButtonPressedEvent(MouseButtonPressedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[e.GetMouseButton()] = true;
 
+		return false;
+	}
+	bool ImGuiLayer::OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[e.GetMouseButton()] = false;
+
+		return false;
+	}
+	bool ImGuiLayer::OnMouseMovedEvent(MouseMovedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MousePos = ImVec2(e.GetX(), e.GetY());
+
+		return false;
 	}
 }
