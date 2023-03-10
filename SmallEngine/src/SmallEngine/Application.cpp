@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "SmallEngine/Platform/Windows/WindowsInput.h"
+
 namespace SmallEngine {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	
@@ -30,6 +32,10 @@ namespace SmallEngine {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+			
+			auto [x, y] = Input::GetMousePosition();
+			SE_CORE_TRACE("{0}, {1}", x, y);
+			/*auto isKeyPressed = Input::IsKeyPressed()*/
 
 			m_Window->OnUpdate();
 		}
@@ -66,6 +72,15 @@ namespace SmallEngine {
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnMouseButtonPressed(MouseButtonPressedEvent& e)
+	{
+		
+		return false;
+	}
+	bool Application::OnKeyPressed(KeyPressedEvent& e)
+	{
+		return false;
 	}
 }
 

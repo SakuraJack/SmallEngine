@@ -3,6 +3,8 @@
 #include "Core.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
 #include "SmallEngine/LayerStack.h"
 
 #include "Window.h"
@@ -25,6 +27,8 @@ namespace SmallEngine {
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
+		bool OnKeyPressed(KeyPressedEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;

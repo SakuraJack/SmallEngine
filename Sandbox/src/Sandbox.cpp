@@ -11,7 +11,8 @@ public:
 
 	void OnUpdate() override
 	{
-		//SE_CLIENT_INFO("ExampleLayer::Update");
+		if (SmallEngine::Input::IsKeyPressed(SE_KEY_TAB))
+			SE_CLIENT_INFO("Tab key is pressed!");
 	}
 
 	void OnEvent(SmallEngine::Event& e) override
