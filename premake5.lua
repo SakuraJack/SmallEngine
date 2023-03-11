@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "SmallEngine/ext/GLFW/include"
 IncludeDir["Glad"] = "SmallEngine/ext/Glad/include"
 IncludeDir["ImGui"] = "SmallEngine/ext/imgui"
+IncludeDir["glm"] = "SmallEngine/ext/glm"
 
 include "SmallEngine/ext/GLFW"
 include "SmallEngine/ext/Glad"
@@ -34,7 +35,9 @@ project "SmallEngine"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/ext/glm/glm/**.hpp",
+        "%{prj.name}/ext/glm/glm/**.inl"
     }
 
     includedirs
@@ -43,7 +46,8 @@ project "SmallEngine"
 		"%{prj.name}/ext/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -104,6 +108,7 @@ project "Sandbox"
     {
         "SmallEngine/src",
         "SmallEngine/ext/spdlog/include",
+        "%{IncludeDir.glm}"
     }
 
     links

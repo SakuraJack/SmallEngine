@@ -33,8 +33,8 @@ namespace SmallEngine {
 				layer->OnUpdate();
 			}
 			
-			auto [x, y] = Input::GetMousePosition();
-			SE_CORE_TRACE("{0}, {1}", x, y);
+			/*auto [x, y] = Input::GetMousePosition();
+			SE_CORE_TRACE("{0}, {1}", x, y);*/
 			/*auto isKeyPressed = Input::IsKeyPressed()*/
 
 			m_Window->OnUpdate();
@@ -45,6 +45,7 @@ namespace SmallEngine {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(OnMouseButtonPressed));
 		//SE_CORE_INFO("{0}", e.ToString());
 		//std::cout << e;
 
@@ -75,7 +76,6 @@ namespace SmallEngine {
 	}
 	bool Application::OnMouseButtonPressed(MouseButtonPressedEvent& e)
 	{
-		
 		return false;
 	}
 	bool Application::OnKeyPressed(KeyPressedEvent& e)
