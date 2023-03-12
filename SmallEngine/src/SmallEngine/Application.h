@@ -7,6 +7,8 @@
 #include "Events/MouseEvent.h"
 #include "SmallEngine/LayerStack.h"
 
+#include "SmallEngine/Platform/ImGui/ImGuiLayer.h"
+
 #include "Window.h"
 
 namespace SmallEngine {
@@ -31,6 +33,7 @@ namespace SmallEngine {
 		bool OnKeyPressed(KeyPressedEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

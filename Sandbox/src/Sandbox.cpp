@@ -44,7 +44,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new SmallEngine::ImGuiLayer());
 	}
 
 	~Sandbox()
